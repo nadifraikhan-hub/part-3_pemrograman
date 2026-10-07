@@ -1,0 +1,279 @@
+/* =========================================================
+   STYLE.CSS - Company Product Catalog
+   ========================================================= */
+
+
+/* ---------- ELEMENT SELECTOR + box-sizing ---------- */
+
+* {
+    box-sizing: border-box;
+    /* box-sizing */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-family */
+    font-size: 16px;
+    /* font-size */
+    line-height: 1.6;
+    /* line-height */
+    color: #1f2937;
+    /* color */
+    background-color: #f3f4f6;
+    /* background-color */
+}
+
+
+/* ---------- GROUPING SELECTOR ---------- */
+
+h1,
+h2,
+h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    /* font-weight */
+}
+
+
+/* ---------- CLASS SELECTOR: HEADER ---------- */
+
+.site-header {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    text-align: center;
+    /* text-align */
+    padding: 24px 16px;
+    /* padding */
+}
+
+.logo {
+    font-size: 32px;
+}
+
+.tagline {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    /* margin */
+}
+
+
+/* ---------- DESCENDANT SELECTOR: NAVIGATION ---------- */
+
+.main-nav ul {
+    list-style: none;
+}
+
+.main-nav ul li {
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.main-nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    /* border-radius */
+}
+
+
+/* ---------- ATTRIBUTE SELECTOR ---------- */
+
+a[href^="#"] {
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border: 1px solid #9ca3af;
+    /* border */
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* ---------- ID SELECTOR: HERO ---------- */
+
+#hero {
+    /* background-image (gradient) */
+    background-image: linear-gradient(135deg, #2563eb, #1e3a8a);
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+#hero h2 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+#hero p {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+
+/* ---------- SECTION UMUM ---------- */
+
+.section {
+    max-width: 1000px;
+    margin: 32px auto;
+    padding: 32px 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.section h2 {
+    font-size: 28px;
+    color: #1e3a8a;
+    margin-bottom: 16px;
+}
+
+.section p {
+    margin-bottom: 12px;
+}
+
+
+/* ---------- TOMBOL ---------- */
+
+.btn {
+    display: inline-block;
+    background-color: #f59e0b;
+    color: #111827;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+
+/* ---------- PRODUK ---------- */
+
+.produk-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+}
+
+.produk-card {
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 18px;
+    background-color: #f9fafb;
+}
+
+
+/* ---------------------------------------------------------
+   KONFLIK SPECIFICITY
+   Ada 3 aturan yang menargetkan elemen yang sama (h3 di
+   dalam .produk-card), semuanya mengubah properti "color":
+
+   1) h3                 -> specificity (0,0,1)
+   2) .produk-card h3    -> specificity (0,1,1)
+   3) #produk h3         -> specificity (1,0,1)
+
+   HASIL: judul produk (h3) berwarna ORANGE (#c2410c)
+   karena aturan ke-3 memakai ID selector yang specificity-nya
+   paling tinggi, sehingga mengalahkan aturan lainnya,
+   walaupun aturan ke-3 ditulis paling atas/bawah sekalipun.
+   --------------------------------------------------------- */
+
+h3 {
+    color: #000000;
+    /* kalah */
+}
+
+.produk-card h3 {
+    color: #1e3a8a;
+    /* kalah dari ID selector */
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+#produk h3 {
+    color: #c2410c;
+    /* MENANG (ID selector) */
+}
+
+
+/* ---------- KONTAK ---------- */
+
+.form-kontak label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.site-footer {
+    background-color: #111827;
+    color: #d1d5db;
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 14px;
+}
+
+.site-footer a {
+    color: #fbbf24;
+}
+
+
+/* =========================================================
+   PSEUDO-CLASS
+   ========================================================= */
+
+
+/* :hover */
+
+.main-nav ul li a:hover {
+    background-color: #2563eb;
+}
+
+.btn:hover {
+    background-color: #d97706;
+}
+
+.produk-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* :focus */
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: #2563eb;
+    background-color: #eff6ff;
+}
+
+
+/* :nth-child() */
+
+.produk-card:nth-child(even) {
+    background-color: #e0e7ff;
+}
+
+.main-nav ul li:nth-child(1) a {
+    font-weight: 700;
+}
